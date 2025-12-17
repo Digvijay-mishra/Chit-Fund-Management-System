@@ -1,0 +1,3038 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KrushnaArpan Associates | Modern Chit Fund Management</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #4361ee;
+        --primary-dark: #3a56d4;
+        --secondary: #7209b7;
+        --success: #4cc9f0;
+        --danger: #f72585;
+        --warning: #f8961e;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --gray: #6c757d;
+        --light-gray: #e9ecef;
+        --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: #f5f7fb;
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        padding: 1.2rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo i {
+        font-size: 2rem;
+      }
+
+      .logo h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .logo span {
+        color: var(--success);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .notification {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .notification-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: var(--danger);
+        color: white;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .user-avatar {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: white;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+
+      /* Dashboard Cards */
+      .dashboard-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin: 2rem 0;
+      }
+
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .card-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+
+      .card-icon.group {
+        background-color: rgba(67, 97, 238, 0.1);
+        color: var(--primary);
+      }
+
+      .card-icon.member {
+        background-color: rgba(114, 9, 183, 0.1);
+        color: var(--secondary);
+      }
+
+      .card-icon.payment {
+        background-color: rgba(76, 201, 240, 0.1);
+        color: var(--success);
+      }
+
+      .card-icon.pending {
+        background-color: rgba(248, 150, 30, 0.1);
+        color: var(--warning);
+      }
+
+      .card-value {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      /* Groups Section */
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 2rem 0 1.5rem 0;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .btn {
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+      }
+
+      .btn-success {
+        background-color: var(--success);
+        color: white;
+      }
+
+      .btn-danger {
+        background-color: var(--danger);
+        color: white;
+      }
+
+      .btn-warning {
+        background-color: var(--warning);
+        color: white;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-sm {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      /* Groups Grid */
+      .groups-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 3rem;
+      }
+
+      .group-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+      }
+
+      .group-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .group-header {
+        padding: 1.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        position: relative;
+      }
+
+      .group-actions {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 10px;
+      }
+
+      .group-action-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .group-action-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .group-name {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .group-details {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .group-body {
+        padding: 1.5rem;
+      }
+
+      .group-info-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      .group-info-label {
+        color: var(--gray);
+        font-weight: 500;
+      }
+
+      .group-info-value {
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .view-members-btn {
+        width: 100%;
+        margin-top: 1rem;
+        justify-content: center;
+      }
+
+      /* Members Section */
+      .members-container {
+        display: none;
+        margin-top: 2rem;
+      }
+
+      .members-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .back-to-groups {
+        background-color: var(--light-gray);
+        color: var(--dark);
+      }
+
+      .members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 25px;
+        margin-bottom: 3rem;
+      }
+
+      .member-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition);
+      }
+
+      .member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .member-header {
+        padding: 1.5rem;
+        background: linear-gradient(135deg, var(--secondary) 0%, #8a2be2 100%);
+        color: white;
+        position: relative;
+      }
+
+      .member-avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: white;
+        color: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        border: 3px solid white;
+      }
+
+      .member-name {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      .member-id {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      .member-actions {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        gap: 10px;
+      }
+
+      .member-body {
+        padding: 1.5rem;
+      }
+
+      .member-info-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      .member-contact-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 1.5rem;
+      }
+
+      .contact-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 0.7rem;
+        font-size: 0.9rem;
+      }
+
+      .contact-btn i {
+        font-size: 1.1rem;
+      }
+
+      /* Tally Section */
+      .tally-container {
+        display: none;
+        margin-top: 2rem;
+      }
+
+      .tally-table-container {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 3rem;
+      }
+
+      .table-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 1.2rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Auction List Section */
+      .auction-container {
+        display: none;
+        margin-top: 2rem;
+      }
+
+      .auction-statement {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 3rem;
+      }
+
+      .auction-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: white;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .auction-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .agent-info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.8rem;
+        border-radius: 6px;
+      }
+
+      .agent-detail {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .agent-label {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+
+      .agent-value {
+        font-weight: 600;
+      }
+
+      /* Table Styles for Auction List */
+      .auction-table-container {
+        overflow-x: auto;
+      }
+
+      .auction-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 1200px;
+      }
+
+      .auction-table th {
+        background-color: #f8f9fa;
+        color: var(--dark);
+        font-weight: 600;
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 2px solid var(--light-gray);
+        font-size: 0.85rem;
+        position: sticky;
+        top: 0;
+      }
+
+      .auction-table td {
+        padding: 0.8rem;
+        border-bottom: 1px solid var(--light-gray);
+        text-align: center;
+        font-size: 0.85rem;
+      }
+
+      .auction-table tr:hover {
+        background-color: rgba(67, 97, 238, 0.03);
+      }
+
+      .auction-table thead tr {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+
+      .auction-table tbody tr:nth-child(even) {
+        background-color: #fafafa;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background-color: var(--light);
+      }
+
+      th {
+        padding: 1rem 1.5rem;
+        text-align: left;
+        font-weight: 600;
+        color: var(--dark);
+        border-bottom: 2px solid var(--light-gray);
+      }
+
+      td {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      tr:hover {
+        background-color: rgba(67, 97, 238, 0.03);
+      }
+
+      .status-badge {
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .status-pending {
+        background-color: rgba(248, 150, 30, 0.15);
+        color: var(--warning);
+      }
+
+      .status-paid {
+        background-color: rgba(76, 201, 240, 0.15);
+        color: var(--success);
+      }
+
+      .status-overdue {
+        background-color: rgba(247, 37, 133, 0.15);
+        color: var(--danger);
+      }
+
+      .status-prized {
+        background-color: rgba(67, 97, 238, 0.15);
+        color: var(--primary);
+      }
+
+      .status-nonprized {
+        background-color: rgba(114, 9, 183, 0.15);
+        color: var(--secondary);
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 600px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        animation: modalFadeIn 0.3s ease;
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--light-gray);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .close-modal {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--gray);
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .close-modal:hover {
+        color: var(--danger);
+      }
+
+      .modal-body {
+        padding: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--light-gray);
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+      }
+
+      .modal-footer {
+        padding: 1.5rem;
+        border-top: 1px solid var(--light-gray);
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .footer-links a {
+        color: var(--light-gray);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .groups-grid,
+        .members-grid {
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        .auction-table-container {
+          overflow-x: scroll;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .user-info {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .dashboard-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .footer-content {
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: center;
+        }
+
+        .agent-info {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .dashboard-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .groups-grid,
+        .members-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .member-contact-actions {
+          flex-direction: column;
+        }
+
+        .auction-table th,
+        .auction-table td {
+          padding: 0.5rem;
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <i class="fas fa-hand-holding-usd"></i>
+            <h1>KA <span>Associates</span></h1>
+          </div>
+
+          <ul class="nav-links">
+            <li>
+              <a href="#" class="active" id="nav-dashboard"
+                ><i class="fas fa-home"></i> Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="#" id="nav-tally"
+                ><i class="fas fa-file-invoice-dollar"></i> Tally Sheet</a
+              >
+            </li>
+            <li>
+              <a href="#" id="nav-auction"
+                ><i class="fas fa-gavel"></i> Auction List</a
+              >
+            </li>
+            <li>
+              <a href="#" id="nav-settings"
+                ><i class="fas fa-cog"></i> Settings</a
+              >
+            </li>
+          </ul>
+
+          <div class="user-info">
+            <div class="notification">
+              <i class="fas fa-bell" style="font-size: 1.3rem"></i>
+              <span class="notification-badge">3</span>
+            </div>
+            <div class="user-avatar">AJ</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Dashboard Cards -->
+      <div class="dashboard-cards" id="dashboard-cards">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Total Groups</h3>
+            <div class="card-icon group">
+              <i class="fas fa-users"></i>
+            </div>
+          </div>
+          <div class="card-value" id="total-groups">5</div>
+          <div class="card-footer">
+            <span>Active: 5</span>
+            <span>Closed: 0</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Total Members</h3>
+            <div class="card-icon member">
+              <i class="fas fa-user-friends"></i>
+            </div>
+          </div>
+          <div class="card-value" id="total-members">125</div>
+          <div class="card-footer">
+            <span>Active: 125</span>
+            <span>Inactive: 0</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Total Collection</h3>
+            <div class="card-icon payment">
+              <i class="fas fa-rupee-sign"></i>
+            </div>
+          </div>
+          <div class="card-value">₹1,87,500</div>
+          <div class="card-footer">
+            <span>This Month: ₹25,000</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Pending Payments</h3>
+            <div class="card-icon pending">
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+          <div class="card-value">₹12,500</div>
+          <div class="card-footer">
+            <span>Overdue: ₹5,000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Groups Section -->
+      <div id="groups-section">
+        <div class="section-header">
+          <h2 class="section-title">Chit Fund Groups</h2>
+          <button class="btn btn-primary" id="add-group-btn">
+            <i class="fas fa-plus"></i> Add New Group
+          </button>
+        </div>
+
+        <div class="groups-grid" id="groups-container">
+          <!-- Groups will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Members Section (Initially Hidden) -->
+      <div class="members-container" id="members-section">
+        <div class="members-header">
+          <button class="btn back-to-groups" id="back-to-groups">
+            <i class="fas fa-arrow-left"></i> Back to Groups
+          </button>
+          <div>
+            <h2 class="section-title" id="group-members-title">
+              Group Members
+            </h2>
+            <p
+              id="group-members-subtitle"
+              style="color: var(--gray); margin-top: 5px"
+            ></p>
+          </div>
+          <button class="btn btn-success" id="add-member-btn">
+            <i class="fas fa-user-plus"></i> Add Member
+          </button>
+        </div>
+
+        <div class="members-grid" id="members-container">
+          <!-- Members will be dynamically added here -->
+        </div>
+      </div>
+
+      <!-- Tally Section (Initially Hidden) -->
+      <div class="tally-container" id="tally-section">
+        <div class="section-header">
+          <h2 class="section-title">Tally Sheet - Pending Payments</h2>
+          <button class="btn btn-primary" id="download-tally">
+            <i class="fas fa-download"></i> Export as PDF
+          </button>
+        </div>
+
+        <div class="tally-table-container">
+          <div class="table-header">
+            <h3>Payment Status Overview</h3>
+            <div style="display: flex; gap: 15px">
+              <div>
+                <div style="font-size: 0.9rem; opacity: 0.9">Total Pending</div>
+                <div style="font-size: 1.5rem; font-weight: 600">₹12,500</div>
+              </div>
+            </div>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Group Name</th>
+                <th>Member Name</th>
+                <th>Pending Amount</th>
+                <th>Due Date</th>
+                <th>Installment No.</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tally-table-body">
+              <!-- Tally rows will be dynamically added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Auction List Section (Initially Hidden) -->
+      <div class="auction-container" id="auction-section">
+        <div class="auction-statement">
+          <div class="auction-header">
+            <h2 class="auction-title">ARESUS STATEMENT</h2>
+            <div class="agent-info">
+              <div class="agent-detail">
+                <span class="agent-label">AGENT NAME</span>
+                <span class="agent-value">KALYMAN_SADAMANO JAMARKAR</span>
+              </div>
+              <div class="agent-detail">
+                <span class="agent-label">AGENT CODE</span>
+                <span class="agent-value">N08553</span>
+              </div>
+              <div class="agent-detail">
+                <span class="agent-label">STATEMENT DATE</span>
+                <span class="agent-value" id="auction-date">17-12-2023</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="auction-table-container">
+            <table class="auction-table">
+              <thead>
+                <tr>
+                  <th>SR NO</th>
+                  <th>GROUP NO</th>
+                  <th>TICKET NO</th>
+                  <th>CUSTOMER NAME</th>
+                  <th>MOBILE NO</th>
+                  <th>APPUI DATE</th>
+                  <th>INST ONGOING</th>
+                  <th>STATUS</th>
+                  <th>PREVIOUS ARREAR</th>
+                  <th>CURRENT AMOUNT</th>
+                  <th>CUM SHARE</th>
+                  <th>TO BE COLL</th>
+                  <th>UNCLAIMED AMT</th>
+                  <th>AGENT</th>
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody id="auction-table-body">
+                <!-- Auction rows will be dynamically added here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="copyright">
+            <p>© 2023 KrushnaArpan Associates. All rights reserved.</p>
+          </div>
+          <div class="footer-links">
+            <a href="#"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+            <a href="#"
+              ><i class="fas fa-file-contract"></i> Terms of Service</a
+            >
+            <a href="#"><i class="fas fa-headset"></i> Support</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Add/Edit Group Modal -->
+    <div class="modal" id="group-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="group-modal-title">Add New Group</h3>
+          <button class="close-modal" id="close-group-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="group-form">
+            <div class="form-group">
+              <label class="form-label" for="group-name">Group Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="group-name"
+                placeholder="Enter group name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="group-amount"
+                >Total Amount (₹)</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="group-amount"
+                placeholder="Enter total amount"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="group-members"
+                >Number of Members</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="group-members"
+                placeholder="Enter number of members"
+                value="25"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="monthly-installment"
+                >Monthly Installment (₹)</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="monthly-installment"
+                placeholder="Enter monthly installment"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="start-date">Start Date</label>
+              <input
+                type="date"
+                class="form-control"
+                id="start-date"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="end-date">End Date</label>
+              <input type="date" class="form-control" id="end-date" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="group-description"
+                >Description (Optional)</label
+              >
+              <textarea
+                class="form-control"
+                id="group-description"
+                rows="3"
+                placeholder="Enter group description"
+              ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" id="cancel-group">Cancel</button>
+          <button class="btn btn-primary" id="save-group">Save Group</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add/Edit Member Modal -->
+    <div class="modal" id="member-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="member-modal-title">Add New Member</h3>
+          <button class="close-modal" id="close-member-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="member-form">
+            <div class="form-group">
+              <label class="form-label" for="member-name">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="member-name"
+                placeholder="Enter member name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="member-phone">Phone Number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="member-phone"
+                placeholder="Enter phone number"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="member-email">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="member-email"
+                placeholder="Enter email address"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="member-address">Address</label>
+              <textarea
+                class="form-control"
+                id="member-address"
+                rows="2"
+                placeholder="Enter address"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="join-date">Join Date</label>
+              <input type="date" class="form-control" id="join-date" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="member-status"
+                >Member Status</label
+              >
+              <select class="form-control" id="member-status" required>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="agent-assigned"
+                >Assign Agent</label
+              >
+              <select class="form-control" id="agent-assigned">
+                <option value="">Select Agent</option>
+                <option value="N08553">
+                  KALYMAN_SADAMANO JAMARKAR (N08553)
+                </option>
+                <option value="N08554">RAJESH PATEL (N08554)</option>
+                <option value="N08555">PRIYA SHARMA (N08555)</option>
+                <option value="N08556">AMIT KUMAR (N08556)</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" id="cancel-member">Cancel</button>
+          <button class="btn btn-primary" id="save-member">Save Member</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Send Notification Modal -->
+    <div class="modal" id="notification-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Send Payment Reminder</h3>
+          <button class="close-modal" id="close-notification-modal">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Recipient</label>
+            <div
+              class="form-control"
+              style="background-color: #f8f9fa; padding: 1rem"
+              id="notification-recipient"
+            >
+              <!-- Recipient info will be added here -->
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notification-type"
+              >Notification Type</label
+            >
+            <select class="form-control" id="notification-type">
+              <option value="sms">SMS</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notification-date"
+              >Schedule Date</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              id="notification-date"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notification-time"
+              >Schedule Time</label
+            >
+            <input
+              type="time"
+              class="form-control"
+              id="notification-time"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notification-message">Message</label>
+            <textarea
+              class="form-control"
+              id="notification-message"
+              rows="4"
+              placeholder="Enter your message here..."
+            >
+Dear [Member Name], this is a reminder that your monthly installment of ₹[Amount] is due on [Due Date]. Please make the payment at your earliest convenience. Thank you!
+                    </textarea
+            >
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" id="cancel-notification">
+            Cancel
+          </button>
+          <button class="btn btn-success" id="send-notification">
+            <i class="fas fa-paper-plane"></i> Schedule Notification
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transfer Member Modal -->
+    <div class="modal" id="transfer-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Transfer Member to Another Agent</h3>
+          <button class="close-modal" id="close-transfer-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Member Details</label>
+            <div
+              class="form-control"
+              style="background-color: #f8f9fa; padding: 1rem"
+              id="transfer-member-details"
+            >
+              <!-- Member info will be added here -->
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Current Agent</label>
+            <div
+              class="form-control"
+              style="background-color: #f8f9fa; padding: 1rem"
+              id="current-agent-details"
+            >
+              <!-- Current agent info will be added here -->
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-agent">Transfer to Agent</label>
+            <select class="form-control" id="new-agent" required>
+              <option value="">Select New Agent</option>
+              <option value="N08553">KALYMAN_SADAMANO JAMARKAR (N08553)</option>
+              <option value="N08554">RAJESH PATEL (N08554)</option>
+              <option value="N08555">PRIYA SHARMA (N08555)</option>
+              <option value="N08556">AMIT KUMAR (N08556)</option>
+              <option value="N08557">SNEHA SINGH (N08557)</option>
+              <option value="N08558">VIKRAM REDDY (N08558)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="transfer-date">Transfer Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="transfer-date"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="transfer-notes"
+              >Transfer Notes (Optional)</label
+            >
+            <textarea
+              class="form-control"
+              id="transfer-notes"
+              rows="3"
+              placeholder="Enter any notes about this transfer..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" id="cancel-transfer">Cancel</button>
+          <button class="btn btn-primary" id="confirm-transfer">
+            <i class="fas fa-exchange-alt"></i> Transfer Member
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initial Data
+      const initialGroups = [
+        {
+          id: 1,
+          name: "ATL G1",
+          amount: 500000,
+          members: 25,
+          monthlyInstallment: 10000,
+          startDate: "2021-12-06",
+          endDate: "2023-12-06",
+          description: "Premium chit fund group",
+          status: "active",
+        },
+        {
+          id: 2,
+          name: "ATL G2",
+          amount: 250000,
+          members: 25,
+          monthlyInstallment: 5000,
+          startDate: "2022-01-15",
+          endDate: "2024-01-15",
+          description: "Medium-term savings group",
+          status: "active",
+        },
+        {
+          id: 3,
+          name: "ATL G3",
+          amount: 100000,
+          members: 25,
+          monthlyInstallment: 2000,
+          startDate: "2022-03-10",
+          endDate: "2024-03-10",
+          description: "Short-term chit for daily income earners",
+          status: "active",
+        },
+        {
+          id: 4,
+          name: "ATL G4",
+          amount: 750000,
+          members: 25,
+          monthlyInstallment: 15000,
+          startDate: "2022-05-20",
+          endDate: "2024-05-20",
+          description: "For business owners looking for capital",
+          status: "active",
+        },
+        {
+          id: 5,
+          name: "ATL G5",
+          amount: 300000,
+          members: 25,
+          monthlyInstallment: 6000,
+          startDate: "2022-07-12",
+          endDate: "2024-07-12",
+          description: "Family-oriented savings scheme",
+          status: "active",
+        },
+      ];
+
+      // Agents Data
+      const agents = [
+        {
+          code: "N08553",
+          name: "KALYMAN_SADAMANO JAMARKAR",
+          phone: "9876543210",
+          email: "kalyman@example.com",
+          totalMembers: 125,
+          commissionRate: 5,
+        },
+        {
+          code: "N08554",
+          name: "RAJESH PATEL",
+          phone: "9876543211",
+          email: "rajesh@example.com",
+          totalMembers: 80,
+          commissionRate: 4.5,
+        },
+        {
+          code: "N08555",
+          name: "PRIYA SHARMA",
+          phone: "9876543212",
+          email: "priya@example.com",
+          totalMembers: 95,
+          commissionRate: 5,
+        },
+        {
+          code: "N08556",
+          name: "AMIT KUMAR",
+          phone: "9876543213",
+          email: "amit@example.com",
+          totalMembers: 110,
+          commissionRate: 4.75,
+        },
+        {
+          code: "N08557",
+          name: "SNEHA SINGH",
+          phone: "9876543214",
+          email: "sneha@example.com",
+          totalMembers: 65,
+          commissionRate: 4.25,
+        },
+        {
+          code: "N08558",
+          name: "VIKRAM REDDY",
+          phone: "9876543215",
+          email: "vikram@example.com",
+          totalMembers: 75,
+          commissionRate: 4.5,
+        },
+      ];
+
+      // Generate auction data matching the image
+      const initialAuctionData = [
+        {
+          srNo: 1,
+          groupNo: "ATL G1",
+          ticketNo: "67661 2",
+          customerName: "PRITT C UNADECZOO",
+          mobileNo: "943053854",
+          appuiDate: "06-12-2021",
+          instOngoing: "48",
+          status: "Prized",
+          previousArrear: "0.00",
+          currentAmount: "9998.00",
+          cumShare: "416859.00",
+          toBeCollected: "9998.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08553",
+        },
+        {
+          srNo: 2,
+          groupNo: "ATL G1",
+          ticketNo: "67661 3",
+          customerName: "SURG J W HENAE",
+          mobileNo: "952151353",
+          appuiDate: "06-12-2021",
+          instOngoing: "48",
+          status: "Prized",
+          previousArrear: "50464.00",
+          currentAmount: "10000.00",
+          cumShare: "365284.00",
+          toBeCollected: "60464.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08553",
+        },
+        {
+          srNo: 3,
+          groupNo: "ATL G1",
+          ticketNo: "67661 4",
+          customerName: "DINER O KAMAE",
+          mobileNo: "997886575",
+          appuiDate: "06-12-2021",
+          instOngoing: "48",
+          status: "Prized",
+          previousArrear: "0.00",
+          currentAmount: "10000.00",
+          cumShare: "415848.00",
+          toBeCollected: "10000.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08553",
+        },
+        {
+          srNo: 4,
+          groupNo: "ATL G1",
+          ticketNo: "67661 5",
+          customerName: "VIVEX A UWE",
+          mobileNo: "948130269",
+          appuiDate: "06-12-2021",
+          instOngoing: "48",
+          status: "Prized",
+          previousArrear: "0.00",
+          currentAmount: "10000.00",
+          cumShare: "415848.00",
+          toBeCollected: "10000.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08553",
+        },
+        {
+          srNo: 5,
+          groupNo: "ATL G1",
+          ticketNo: "67661 6",
+          customerName: "ASSIMY P PATTI",
+          mobileNo: "860843274",
+          appuiDate: "06-12-2021",
+          instOngoing: "48",
+          status: "Prized",
+          previousArrear: "0.00",
+          currentAmount: "10000.00",
+          cumShare: "415848.00",
+          toBeCollected: "10000.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08553",
+        },
+        {
+          srNo: 6,
+          groupNo: "ATL G1",
+          ticketNo: "67661 7",
+          customerName: "ALLAPRASIO S SAMU",
+          mobileNo: "702056494",
+          appuiDate: "31-12-2021",
+          instOngoing: "48",
+          status: "Prized",
+          previousArrear: "0.00",
+          currentAmount: "10000.00",
+          cumShare: "415848.00",
+          toBeCollected: "10000.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08554",
+        },
+        {
+          srNo: 7,
+          groupNo: "ATL G1",
+          ticketNo: "67661 8",
+          customerName: "CHATTAI R ULHE",
+          mobileNo: "9822578915",
+          appuiDate: "20-01-2022",
+          instOngoing: "48",
+          status: "Prized",
+          previousArrear: "0.00",
+          currentAmount: "10000.00",
+          cumShare: "415848.00",
+          toBeCollected: "10000.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08555",
+        },
+        {
+          srNo: 8,
+          groupNo: "ATL G1",
+          ticketNo: "67661 9",
+          customerName: "PARKZA N ENHAME",
+          mobileNo: "842366933",
+          appuiDate: "22-01-2022",
+          instOngoing: "48",
+          status: "Non-Prx",
+          previousArrear: "78173.00",
+          currentAmount: "10000.00",
+          cumShare: "338675.00",
+          toBeCollected: "85173.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08553",
+        },
+        {
+          srNo: 9,
+          groupNo: "ATL G2",
+          ticketNo: "67662 1",
+          customerName: "RAJESH KUMAR",
+          mobileNo: "9876543210",
+          appuiDate: "15-01-2022",
+          instOngoing: "36",
+          status: "Prized",
+          previousArrear: "0.00",
+          currentAmount: "5000.00",
+          cumShare: "180000.00",
+          toBeCollected: "5000.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08554",
+        },
+        {
+          srNo: 10,
+          groupNo: "ATL G2",
+          ticketNo: "67662 2",
+          customerName: "PRIYA SHARMA",
+          mobileNo: "9876543211",
+          appuiDate: "15-01-2022",
+          instOngoing: "36",
+          status: "Non-Prx",
+          previousArrear: "15000.00",
+          currentAmount: "5000.00",
+          cumShare: "165000.00",
+          toBeCollected: "20000.00",
+          unclaimedAmt: "0.0",
+          agentCode: "N08555",
+        },
+      ];
+
+      // Generate initial members for each group
+      const initialMembers = [];
+      const firstNames = [
+        "Raj",
+        "Priya",
+        "Amit",
+        "Sneha",
+        "Vikram",
+        "Anjali",
+        "Karthik",
+        "Divya",
+        "Rahul",
+        "Pooja",
+        "Suresh",
+        "Meera",
+        "Arun",
+        "Lakshmi",
+        "Manoj",
+        "Swati",
+        "Sanjay",
+        "Neha",
+        "Vijay",
+        "Shweta",
+        "Deepak",
+        "Kavita",
+        "Naveen",
+        "Ritu",
+        "Harish",
+      ];
+      const lastNames = [
+        "Sharma",
+        "Patel",
+        "Kumar",
+        "Singh",
+        "Reddy",
+        "Verma",
+        "Joshi",
+        "Desai",
+        "Mehta",
+        "Choudhary",
+        "Iyer",
+        "Nair",
+        "Menon",
+        "Pillai",
+        "Rao",
+        "Chopra",
+        "Malhotra",
+        "Saxena",
+        "Trivedi",
+        "Bose",
+        "Banerjee",
+        "Chatterjee",
+        "Das",
+        "Roy",
+        "Sen",
+      ];
+      const cities = [
+        "Mumbai",
+        "Delhi",
+        "Bangalore",
+        "Hyderabad",
+        "Chennai",
+        "Kolkata",
+        "Pune",
+        "Ahmedabad",
+        "Jaipur",
+        "Lucknow",
+      ];
+
+      let memberId = 1;
+      initialGroups.forEach((group) => {
+        for (let i = 0; i < 25; i++) {
+          const firstName =
+            firstNames[Math.floor(Math.random() * firstNames.length)];
+          const lastName =
+            lastNames[Math.floor(Math.random() * lastNames.length)];
+          const city = cities[Math.floor(Math.random() * cities.length)];
+          const agentCode =
+            agents[Math.floor(Math.random() * agents.length)].code;
+
+          initialMembers.push({
+            id: memberId++,
+            groupId: group.id,
+            name: `${firstName} ${lastName}`,
+            phone: `9${Math.floor(100000000 + Math.random() * 900000000)}`,
+            email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@gmail.com`,
+            address: `${Math.floor(Math.random() * 100) + 1} Street, ${city}`,
+            joinDate: group.startDate,
+            status: "active",
+            agentCode: agentCode,
+            paidInstallments: Math.floor(Math.random() * 10),
+            pendingAmount: Math.floor(Math.random() * 5000),
+          });
+        }
+      });
+
+      // Tally data
+      const initialTally = [
+        {
+          groupId: 1,
+          groupName: "Golden Chit Fund",
+          memberName: "Raj Sharma",
+          pendingAmount: 10000,
+          dueDate: "2023-10-05",
+          installmentNo: 3,
+          status: "pending",
+        },
+        {
+          groupId: 1,
+          groupName: "Golden Chit Fund",
+          memberName: "Priya Patel",
+          pendingAmount: 10000,
+          dueDate: "2023-10-10",
+          installmentNo: 3,
+          status: "overdue",
+        },
+        {
+          groupId: 2,
+          groupName: "Silver Savings Group",
+          memberName: "Amit Kumar",
+          pendingAmount: 6000,
+          dueDate: "2023-10-01",
+          installmentNo: 4,
+          status: "overdue",
+        },
+        {
+          groupId: 2,
+          groupName: "Silver Savings Group",
+          memberName: "Sneha Singh",
+          pendingAmount: 6000,
+          dueDate: "2023-10-12",
+          installmentNo: 4,
+          status: "pending",
+        },
+        {
+          groupId: 3,
+          groupName: "Daily Income Chit",
+          memberName: "Vikram Reddy",
+          pendingAmount: 4000,
+          dueDate: "2023-10-08",
+          installmentNo: 5,
+          status: "pending",
+        },
+        {
+          groupId: 4,
+          groupName: "Business Growth Fund",
+          memberName: "Anjali Verma",
+          pendingAmount: 20000,
+          dueDate: "2023-10-03",
+          installmentNo: 2,
+          status: "overdue",
+        },
+        {
+          groupId: 5,
+          groupName: "Family Savings Plan",
+          memberName: "Karthik Joshi",
+          pendingAmount: 4000,
+          dueDate: "2023-10-15",
+          installmentNo: 6,
+          status: "pending",
+        },
+      ];
+
+      // State
+      let groups =
+        JSON.parse(localStorage.getItem("chitFundGroups")) || initialGroups;
+      let members =
+        JSON.parse(localStorage.getItem("chitFundMembers")) || initialMembers;
+      let tallyData =
+        JSON.parse(localStorage.getItem("chitFundTally")) || initialTally;
+      let auctionData =
+        JSON.parse(localStorage.getItem("chitFundAuction")) ||
+        initialAuctionData;
+      let currentGroupId = null;
+      let editingGroupId = null;
+      let editingMemberId = null;
+      let notificationMember = null;
+      let transferMember = null;
+
+      // Initialize the app
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeApp();
+        setupEventListeners();
+        renderGroups();
+        renderTally();
+        renderAuctionList();
+      });
+
+      function initializeApp() {
+        // Set default dates in modals
+        const today = new Date();
+        const formattedDate = formatDateForDisplay(today);
+        document.getElementById("auction-date").textContent = formattedDate;
+
+        document.getElementById("start-date").value = formatDateForInput(today);
+        document.getElementById("end-date").value = getFutureDate(24); // 24 months from now
+        document.getElementById("join-date").value = formatDateForInput(today);
+        document.getElementById("notification-date").value =
+          formatDateForInput(today);
+        document.getElementById("transfer-date").value =
+          formatDateForInput(today);
+
+        // Set notification time to current time + 1 hour
+        const now = new Date();
+        now.setHours(now.getHours() + 1);
+        const timeString = now.toTimeString().substring(0, 5);
+        document.getElementById("notification-time").value = timeString;
+
+        // Update total counts
+        document.getElementById("total-groups").textContent = groups.length;
+        document.getElementById("total-members").textContent = members.length;
+      }
+
+      function formatDateForInput(date) {
+        return date.toISOString().split("T")[0];
+      }
+
+      function formatDateForDisplay(date) {
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+      }
+
+      function getFutureDate(monthsToAdd) {
+        const date = new Date();
+        date.setMonth(date.getMonth() + monthsToAdd);
+        return date.toISOString().split("T")[0];
+      }
+
+      function setupEventListeners() {
+        // Navigation
+        document
+          .getElementById("nav-dashboard")
+          .addEventListener("click", showDashboard);
+        document
+          .getElementById("nav-tally")
+          .addEventListener("click", showTally);
+        document
+          .getElementById("nav-auction")
+          .addEventListener("click", showAuctionList);
+
+        // Group actions
+        document
+          .getElementById("add-group-btn")
+          .addEventListener("click", showAddGroupModal);
+        document
+          .getElementById("save-group")
+          .addEventListener("click", saveGroup);
+        document
+          .getElementById("cancel-group")
+          .addEventListener("click", closeGroupModal);
+        document
+          .getElementById("close-group-modal")
+          .addEventListener("click", closeGroupModal);
+
+        // Member actions
+        document
+          .getElementById("add-member-btn")
+          .addEventListener("click", showAddMemberModal);
+        document
+          .getElementById("save-member")
+          .addEventListener("click", saveMember);
+        document
+          .getElementById("cancel-member")
+          .addEventListener("click", closeMemberModal);
+        document
+          .getElementById("close-member-modal")
+          .addEventListener("click", closeMemberModal);
+        document
+          .getElementById("back-to-groups")
+          .addEventListener("click", showDashboard);
+
+        // Notification actions
+        document
+          .getElementById("send-notification")
+          .addEventListener("click", sendNotification);
+        document
+          .getElementById("cancel-notification")
+          .addEventListener("click", closeNotificationModal);
+        document
+          .getElementById("close-notification-modal")
+          .addEventListener("click", closeNotificationModal);
+
+        // Transfer actions
+        document
+          .getElementById("confirm-transfer")
+          .addEventListener("click", confirmTransfer);
+        document
+          .getElementById("cancel-transfer")
+          .addEventListener("click", closeTransferModal);
+        document
+          .getElementById("close-transfer-modal")
+          .addEventListener("click", closeTransferModal);
+
+        // Tally actions
+        document
+          .getElementById("download-tally")
+          .addEventListener("click", downloadTally);
+      }
+
+      function showDashboard() {
+        document.getElementById("groups-section").style.display = "block";
+        document.getElementById("members-section").style.display = "none";
+        document.getElementById("tally-section").style.display = "none";
+        document.getElementById("auction-section").style.display = "none";
+        document.getElementById("dashboard-cards").style.display = "grid";
+
+        // Update active nav
+        document
+          .querySelectorAll(".nav-links a")
+          .forEach((link) => link.classList.remove("active"));
+        document.getElementById("nav-dashboard").classList.add("active");
+
+        renderGroups();
+      }
+
+      function showTally() {
+        document.getElementById("groups-section").style.display = "none";
+        document.getElementById("members-section").style.display = "none";
+        document.getElementById("tally-section").style.display = "block";
+        document.getElementById("auction-section").style.display = "none";
+        document.getElementById("dashboard-cards").style.display = "none";
+
+        // Update active nav
+        document
+          .querySelectorAll(".nav-links a")
+          .forEach((link) => link.classList.remove("active"));
+        document.getElementById("nav-tally").classList.add("active");
+
+        renderTally();
+      }
+
+      function showAuctionList() {
+        document.getElementById("groups-section").style.display = "none";
+        document.getElementById("members-section").style.display = "none";
+        document.getElementById("tally-section").style.display = "none";
+        document.getElementById("auction-section").style.display = "block";
+        document.getElementById("dashboard-cards").style.display = "none";
+
+        // Update active nav
+        document
+          .querySelectorAll(".nav-links a")
+          .forEach((link) => link.classList.remove("active"));
+        document.getElementById("nav-auction").classList.add("active");
+
+        renderAuctionList();
+      }
+
+      function showGroupMembers(groupId) {
+        currentGroupId = groupId;
+        const group = groups.find((g) => g.id === groupId);
+
+        document.getElementById("groups-section").style.display = "none";
+        document.getElementById("members-section").style.display = "block";
+        document.getElementById("tally-section").style.display = "none";
+        document.getElementById("auction-section").style.display = "none";
+        document.getElementById("dashboard-cards").style.display = "none";
+
+        document.getElementById(
+          "group-members-title"
+        ).textContent = `${group.name} - Members`;
+        document.getElementById(
+          "group-members-subtitle"
+        ).textContent = `Total Members: ${group.members}`;
+
+        renderMembers();
+      }
+
+      function renderGroups() {
+        const container = document.getElementById("groups-container");
+        container.innerHTML = "";
+
+        groups.forEach((group) => {
+          const groupElement = document.createElement("div");
+          groupElement.className = "group-card";
+          groupElement.innerHTML = `
+                    <div class="group-header">
+                        <div class="group-actions">
+                            <button class="group-action-btn edit-group" data-id="${
+                              group.id
+                            }">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="group-action-btn delete-group" data-id="${
+                              group.id
+                            }">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="group-name">${group.name}</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">${
+                          group.description
+                        }</div>
+                        <div class="group-details">
+                            <div>
+                                <div style="font-size: 0.8rem;">Total Amount</div>
+                                <div style="font-size: 1.2rem; font-weight: 600;">₹${group.amount.toLocaleString()}</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.8rem;">Monthly</div>
+                                <div style="font-size: 1.2rem; font-weight: 600;">₹${group.monthlyInstallment.toLocaleString()}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-body">
+                        <div class="group-info-item">
+                            <span class="group-info-label">Total Members</span>
+                            <span class="group-info-value">${
+                              group.members
+                            }</span>
+                        </div>
+                        <div class="group-info-item">
+                            <span class="group-info-label">Start Date</span>
+                            <span class="group-info-value">${formatDate(
+                              group.startDate
+                            )}</span>
+                        </div>
+                        <div class="group-info-item">
+                            <span class="group-info-label">End Date</span>
+                            <span class="group-info-value">${formatDate(
+                              group.endDate
+                            )}</span>
+                        </div>
+                        <div class="group-info-item">
+                            <span class="group-info-label">Status</span>
+                            <span class="group-info-value" style="color: ${
+                              group.status === "active"
+                                ? "var(--success)"
+                                : "var(--danger)"
+                            }">
+                                ${
+                                  group.status.charAt(0).toUpperCase() +
+                                  group.status.slice(1)
+                                }
+                            </span>
+                        </div>
+                        <button class="btn btn-primary view-members-btn" data-id="${
+                          group.id
+                        }">
+                            <i class="fas fa-eye"></i> View Members (${
+                              group.members
+                            })
+                        </button>
+                    </div>
+                `;
+
+          container.appendChild(groupElement);
+        });
+
+        // Add event listeners to group buttons
+        document.querySelectorAll(".view-members-btn").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const groupId = parseInt(this.getAttribute("data-id"));
+            showGroupMembers(groupId);
+          });
+        });
+
+        document.querySelectorAll(".edit-group").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const groupId = parseInt(this.getAttribute("data-id"));
+            editGroup(groupId);
+          });
+        });
+
+        document.querySelectorAll(".delete-group").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const groupId = parseInt(this.getAttribute("data-id"));
+            deleteGroup(groupId);
+          });
+        });
+      }
+
+      function renderMembers() {
+        const container = document.getElementById("members-container");
+        container.innerHTML = "";
+
+        const groupMembers = members.filter(
+          (member) => member.groupId === currentGroupId
+        );
+
+        groupMembers.forEach((member) => {
+          const initials = member.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase();
+          const memberElement = document.createElement("div");
+          memberElement.className = "member-card";
+
+          const agent = agents.find((a) => a.code === member.agentCode);
+          const agentName = agent
+            ? agent.name.split(" ")[0] + " " + agent.code
+            : "Not Assigned";
+
+          memberElement.innerHTML = `
+                    <div class="member-header">
+                        <div class="member-actions">
+                            <button class="group-action-btn edit-member" data-id="${
+                              member.id
+                            }">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="group-action-btn delete-member" data-id="${
+                              member.id
+                            }">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="member-avatar">${initials}</div>
+                        <div class="member-name">${member.name}</div>
+                        <div class="member-id">ID: CFM${member.id
+                          .toString()
+                          .padStart(4, "0")}</div>
+                    </div>
+                    <div class="member-body">
+                        <div class="member-info-item">
+                            <span class="group-info-label">Phone</span>
+                            <span class="group-info-value">${
+                              member.phone
+                            }</span>
+                        </div>
+                        <div class="member-info-item">
+                            <span class="group-info-label">Email</span>
+                            <span class="group-info-value">${
+                              member.email
+                            }</span>
+                        </div>
+                        <div class="member-info-item">
+                            <span class="group-info-label">Address</span>
+                            <span class="group-info-value">${
+                              member.address
+                            }</span>
+                        </div>
+                        <div class="member-info-item">
+                            <span class="group-info-label">Join Date</span>
+                            <span class="group-info-value">${formatDate(
+                              member.joinDate
+                            )}</span>
+                        </div>
+                        <div class="member-info-item">
+                            <span class="group-info-label">Assigned Agent</span>
+                            <span class="group-info-value">${agentName}</span>
+                        </div>
+                        <div class="member-info-item">
+                            <span class="group-info-label">Paid Installments</span>
+                            <span class="group-info-value">${
+                              member.paidInstallments
+                            }</span>
+                        </div>
+                        <div class="member-info-item">
+                            <span class="group-info-label">Pending Amount</span>
+                            <span class="group-info-value" style="color: ${
+                              member.pendingAmount > 0
+                                ? "var(--danger)"
+                                : "var(--success)"
+                            }">
+                                ₹${member.pendingAmount}
+                            </span>
+                        </div>
+                        <div class="member-contact-actions">
+                            <button class="btn btn-success contact-btn send-sms" data-id="${
+                              member.id
+                            }">
+                                <i class="fas fa-sms"></i> SMS
+                            </button>
+                            <button class="btn btn-success contact-btn send-whatsapp" data-id="${
+                              member.id
+                            }" style="background-color: #25D366;">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="btn btn-primary contact-btn send-email" data-id="${
+                              member.id
+                            }">
+                                <i class="fas fa-envelope"></i> Email
+                            </button>
+                        </div>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem;" data-id="${
+                          member.id
+                        }" onclick="showTransferModal(${member.id})">
+                            <i class="fas fa-exchange-alt"></i> Transfer Agent
+                        </button>
+                    </div>
+                `;
+
+          container.appendChild(memberElement);
+        });
+
+        // Add event listeners to member buttons
+        document.querySelectorAll(".edit-member").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const memberId = parseInt(this.getAttribute("data-id"));
+            editMember(memberId);
+          });
+        });
+
+        document.querySelectorAll(".delete-member").forEach((btn) => {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const memberId = parseInt(this.getAttribute("data-id"));
+            deleteMember(memberId);
+          });
+        });
+
+        document.querySelectorAll(".send-sms").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const memberId = parseInt(this.getAttribute("data-id"));
+            showNotificationModal(memberId, "sms");
+          });
+        });
+
+        document.querySelectorAll(".send-whatsapp").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const memberId = parseInt(this.getAttribute("data-id"));
+            showNotificationModal(memberId, "whatsapp");
+          });
+        });
+
+        document.querySelectorAll(".send-email").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const memberId = parseInt(this.getAttribute("data-id"));
+            showNotificationModal(memberId, "email");
+          });
+        });
+      }
+
+      function renderTally() {
+        const container = document.getElementById("tally-table-body");
+        container.innerHTML = "";
+
+        tallyData.forEach((item) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+                    <td>${item.groupName}</td>
+                    <td>${item.memberName}</td>
+                    <td>₹${item.pendingAmount.toLocaleString()}</td>
+                    <td>${formatDate(item.dueDate)}</td>
+                    <td>${item.installmentNo}</td>
+                    <td>
+                        <span class="status-badge status-${item.status}">
+                            ${
+                              item.status.charAt(0).toUpperCase() +
+                              item.status.slice(1)
+                            }
+                        </span>
+                    </td>
+                    <td>
+                        <button class="group-action-btn" style="background-color: var(--light-gray); color: var(--dark);" data-member="${
+                          item.memberName
+                        }">
+                            <i class="fas fa-bell"></i> Remind
+                        </button>
+                    </td>
+                `;
+
+          container.appendChild(row);
+        });
+
+        // Add event listeners to remind buttons
+        document
+          .querySelectorAll("#tally-table-body .group-action-btn")
+          .forEach((btn) => {
+            btn.addEventListener("click", function () {
+              const memberName = this.getAttribute("data-member");
+              const member = members.find((m) => m.name === memberName);
+              if (member) {
+                showNotificationModal(member.id, "sms");
+              }
+            });
+          });
+      }
+
+      function renderAuctionList() {
+        const container = document.getElementById("auction-table-body");
+        container.innerHTML = "";
+
+        auctionData.forEach((item) => {
+          const row = document.createElement("tr");
+          const agent = agents.find((a) => a.code === item.agentCode);
+          const agentName = agent ? agent.name.split(" ")[0] : "Unknown";
+
+          row.innerHTML = `
+                    <td>${item.srNo}</td>
+                    <td>${item.groupNo}</td>
+                    <td>${item.ticketNo}</td>
+                    <td>${item.customerName}</td>
+                    <td>${item.mobileNo}</td>
+                    <td>${item.appuiDate}</td>
+                    <td>${item.instOngoing}</td>
+                    <td>
+                        <span class="status-badge ${
+                          item.status === "Prized"
+                            ? "status-prized"
+                            : "status-nonprized"
+                        }">
+                            ${item.status}
+                        </span>
+                    </td>
+                    <td>₹${parseFloat(item.previousArrear).toLocaleString(
+                      "en-IN",
+                      { minimumFractionDigits: 2 }
+                    )}</td>
+                    <td>₹${parseFloat(item.currentAmount).toLocaleString(
+                      "en-IN",
+                      { minimumFractionDigits: 2 }
+                    )}</td>
+                    <td>₹${parseFloat(item.cumShare).toLocaleString("en-IN", {
+                      minimumFractionDigits: 2,
+                    })}</td>
+                    <td>₹${parseFloat(item.toBeCollected).toLocaleString(
+                      "en-IN",
+                      { minimumFractionDigits: 2 }
+                    )}</td>
+                    <td>₹${parseFloat(item.unclaimedAmt).toLocaleString(
+                      "en-IN",
+                      { minimumFractionDigits: 1 }
+                    )}</td>
+                    <td>${agentName} (${item.agentCode})</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline" onclick="showTransferModalByDetails('${
+                          item.customerName
+                        }', '${item.agentCode}')">
+                            <i class="fas fa-exchange-alt"></i> Transfer
+                        </button>
+                    </td>
+                `;
+
+          container.appendChild(row);
+        });
+      }
+
+      // Global function to show transfer modal from auction list
+      window.showTransferModalByDetails = function (customerName, agentCode) {
+        const auctionMember = auctionData.find(
+          (m) => m.customerName === customerName
+        );
+        if (auctionMember) {
+          showTransferModalForAuction(auctionMember);
+        }
+      };
+
+      function showTransferModalForAuction(auctionMember) {
+        transferMember = auctionMember;
+        const agent = agents.find((a) => a.code === auctionMember.agentCode);
+
+        document.getElementById("transfer-member-details").innerHTML = `
+            <div><strong>${auctionMember.customerName}</strong></div>
+            <div>Ticket No: ${auctionMember.ticketNo}</div>
+            <div>Group: ${auctionMember.groupNo}</div>
+            <div>Mobile: ${auctionMember.mobileNo}</div>
+        `;
+
+        document.getElementById("current-agent-details").innerHTML = `
+            <div><strong>${agent ? agent.name : "Unknown Agent"}</strong></div>
+            <div>Code: ${auctionMember.agentCode}</div>
+        `;
+
+        document.getElementById("transfer-date").value = formatDateForInput(
+          new Date()
+        );
+        document.getElementById("new-agent").value = "";
+        document.getElementById("transfer-notes").value = "";
+
+        document.getElementById("transfer-modal").classList.add("active");
+      }
+
+      function showTransferModal(memberId) {
+        const member = members.find((m) => m.id === memberId);
+        if (!member) return;
+
+        transferMember = member;
+        const agent = agents.find((a) => a.code === member.agentCode);
+        const group = groups.find((g) => g.id === member.groupId);
+
+        document.getElementById("transfer-member-details").innerHTML = `
+            <div><strong>${member.name}</strong></div>
+            <div>Phone: ${member.phone}</div>
+            <div>Group: ${group ? group.name : "Unknown"}</div>
+            <div>Join Date: ${formatDate(member.joinDate)}</div>
+        `;
+
+        document.getElementById("current-agent-details").innerHTML = `
+            <div><strong>${agent ? agent.name : "Not Assigned"}</strong></div>
+            <div>Code: ${member.agentCode || "N/A"}</div>
+        `;
+
+        document.getElementById("transfer-date").value = formatDateForInput(
+          new Date()
+        );
+        document.getElementById("new-agent").value = "";
+        document.getElementById("transfer-notes").value = "";
+
+        document.getElementById("transfer-modal").classList.add("active");
+      }
+
+      function confirmTransfer() {
+        const newAgentCode = document.getElementById("new-agent").value;
+        const transferDate = document.getElementById("transfer-date").value;
+        const transferNotes = document.getElementById("transfer-notes").value;
+
+        if (!newAgentCode) {
+          alert("Please select a new agent");
+          return;
+        }
+
+        const newAgent = agents.find((a) => a.code === newAgentCode);
+        const oldAgent = agents.find(
+          (a) => a.code === transferMember.agentCode
+        );
+
+        if (!newAgent) {
+          alert("Selected agent not found");
+          return;
+        }
+
+        // Update member's agent in members array
+        if (transferMember.id) {
+          const memberIndex = members.findIndex(
+            (m) => m.id === transferMember.id
+          );
+          if (memberIndex !== -1) {
+            members[memberIndex].agentCode = newAgentCode;
+          }
+        }
+
+        // Update auction data if applicable
+        if (transferMember.customerName) {
+          const auctionIndex = auctionData.findIndex(
+            (a) => a.customerName === transferMember.customerName
+          );
+          if (auctionIndex !== -1) {
+            auctionData[auctionIndex].agentCode = newAgentCode;
+          }
+        }
+
+        // Save to localStorage
+        saveToLocalStorage();
+
+        // Show success message
+        alert(
+          `Member transferred from ${oldAgent ? oldAgent.name : "Unknown"} to ${
+            newAgent.name
+          } successfully!`
+        );
+
+        // Refresh displays
+        if (currentGroupId) {
+          renderMembers();
+        }
+        renderAuctionList();
+
+        closeTransferModal();
+      }
+
+      function showAddGroupModal() {
+        editingGroupId = null;
+        document.getElementById("group-modal-title").textContent =
+          "Add New Group";
+        document.getElementById("group-form").reset();
+
+        // Set default dates
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("start-date").value = today;
+        document.getElementById("end-date").value = getFutureDate(24);
+
+        document.getElementById("group-modal").classList.add("active");
+      }
+
+      function editGroup(groupId) {
+        editingGroupId = groupId;
+        const group = groups.find((g) => g.id === groupId);
+
+        document.getElementById("group-modal-title").textContent = "Edit Group";
+        document.getElementById("group-name").value = group.name;
+        document.getElementById("group-amount").value = group.amount;
+        document.getElementById("group-members").value = group.members;
+        document.getElementById("monthly-installment").value =
+          group.monthlyInstallment;
+        document.getElementById("start-date").value = group.startDate;
+        document.getElementById("end-date").value = group.endDate;
+        document.getElementById("group-description").value = group.description;
+
+        document.getElementById("group-modal").classList.add("active");
+      }
+
+      function saveGroup() {
+        const groupName = document.getElementById("group-name").value;
+        const groupAmount = parseInt(
+          document.getElementById("group-amount").value
+        );
+        const groupMembers = parseInt(
+          document.getElementById("group-members").value
+        );
+        const monthlyInstallment = parseInt(
+          document.getElementById("monthly-installment").value
+        );
+        const startDate = document.getElementById("start-date").value;
+        const endDate = document.getElementById("end-date").value;
+        const description = document.getElementById("group-description").value;
+
+        if (
+          !groupName ||
+          !groupAmount ||
+          !groupMembers ||
+          !monthlyInstallment ||
+          !startDate ||
+          !endDate
+        ) {
+          alert("Please fill in all required fields");
+          return;
+        }
+
+        if (editingGroupId) {
+          // Update existing group
+          const index = groups.findIndex((g) => g.id === editingGroupId);
+          groups[index] = {
+            ...groups[index],
+            name: groupName,
+            amount: groupAmount,
+            members: groupMembers,
+            monthlyInstallment: monthlyInstallment,
+            startDate: startDate,
+            endDate: endDate,
+            description: description,
+          };
+        } else {
+          // Add new group
+          const newId =
+            groups.length > 0 ? Math.max(...groups.map((g) => g.id)) + 1 : 1;
+          groups.push({
+            id: newId,
+            name: groupName,
+            amount: groupAmount,
+            members: groupMembers,
+            monthlyInstallment: monthlyInstallment,
+            startDate: startDate,
+            endDate: endDate,
+            description: description,
+            status: "active",
+          });
+
+          // Add members for the new group
+          addMembersForNewGroup(newId, groupMembers);
+        }
+
+        saveToLocalStorage();
+        closeGroupModal();
+        renderGroups();
+        updateDashboardCounts();
+      }
+
+      function addMembersForNewGroup(groupId, memberCount) {
+        const firstNames = [
+          "Raj",
+          "Priya",
+          "Amit",
+          "Sneha",
+          "Vikram",
+          "Anjali",
+          "Karthik",
+          "Divya",
+          "Rahul",
+          "Pooja",
+        ];
+        const lastNames = [
+          "Sharma",
+          "Patel",
+          "Kumar",
+          "Singh",
+          "Reddy",
+          "Verma",
+          "Joshi",
+          "Desai",
+          "Mehta",
+          "Choudhary",
+        ];
+        const cities = ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai"];
+
+        const group = groups.find((g) => g.id === groupId);
+
+        for (let i = 0; i < memberCount; i++) {
+          const firstName =
+            firstNames[Math.floor(Math.random() * firstNames.length)];
+          const lastName =
+            lastNames[Math.floor(Math.random() * lastNames.length)];
+          const city = cities[Math.floor(Math.random() * cities.length)];
+          const agentCode =
+            agents[Math.floor(Math.random() * agents.length)].code;
+
+          const newMemberId =
+            members.length > 0 ? Math.max(...members.map((m) => m.id)) + 1 : 1;
+
+          members.push({
+            id: newMemberId,
+            groupId: groupId,
+            name: `${firstName} ${lastName}`,
+            phone: `9${Math.floor(100000000 + Math.random() * 900000000)}`,
+            email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@gmail.com`,
+            address: `${Math.floor(Math.random() * 100) + 1} Street, ${city}`,
+            joinDate: group.startDate,
+            status: "active",
+            agentCode: agentCode,
+            paidInstallments: 0,
+            pendingAmount: group.monthlyInstallment,
+          });
+        }
+
+        // Add to tally
+        const newMember = members[members.length - 1];
+        tallyData.push({
+          groupId: groupId,
+          groupName: group.name,
+          memberName: newMember.name,
+          pendingAmount: group.monthlyInstallment,
+          dueDate: getFutureDate(1),
+          installmentNo: 1,
+          status: "pending",
+        });
+      }
+
+      function deleteGroup(groupId) {
+        if (
+          confirm(
+            "Are you sure you want to delete this group? This will also delete all members in this group."
+          )
+        ) {
+          // Remove group
+          groups = groups.filter((g) => g.id !== groupId);
+
+          // Remove members of this group
+          members = members.filter((m) => m.groupId !== groupId);
+
+          // Remove tally entries for this group
+          tallyData = tallyData.filter((t) => t.groupId !== groupId);
+
+          saveToLocalStorage();
+          renderGroups();
+          updateDashboardCounts();
+
+          // If we're viewing members of this group, go back to dashboard
+          if (currentGroupId === groupId) {
+            showDashboard();
+          }
+        }
+      }
+
+      function showAddMemberModal() {
+        editingMemberId = null;
+        document.getElementById("member-modal-title").textContent =
+          "Add New Member";
+        document.getElementById("member-form").reset();
+
+        // Set default date
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("join-date").value = today;
+
+        document.getElementById("member-modal").classList.add("active");
+      }
+
+      function editMember(memberId) {
+        editingMemberId = memberId;
+        const member = members.find((m) => m.id === memberId);
+
+        document.getElementById("member-modal-title").textContent =
+          "Edit Member";
+        document.getElementById("member-name").value = member.name;
+        document.getElementById("member-phone").value = member.phone;
+        document.getElementById("member-email").value = member.email;
+        document.getElementById("member-address").value = member.address;
+        document.getElementById("join-date").value = member.joinDate;
+        document.getElementById("member-status").value = member.status;
+        document.getElementById("agent-assigned").value =
+          member.agentCode || "";
+
+        document.getElementById("member-modal").classList.add("active");
+      }
+
+      function saveMember() {
+        const memberName = document.getElementById("member-name").value;
+        const memberPhone = document.getElementById("member-phone").value;
+        const memberEmail = document.getElementById("member-email").value;
+        const memberAddress = document.getElementById("member-address").value;
+        const joinDate = document.getElementById("join-date").value;
+        const memberStatus = document.getElementById("member-status").value;
+        const agentCode = document.getElementById("agent-assigned").value;
+
+        if (!memberName || !memberPhone || !joinDate) {
+          alert("Please fill in all required fields");
+          return;
+        }
+
+        const group = groups.find((g) => g.id === currentGroupId);
+
+        if (editingMemberId) {
+          // Update existing member
+          const index = members.findIndex((m) => m.id === editingMemberId);
+          members[index] = {
+            ...members[index],
+            name: memberName,
+            phone: memberPhone,
+            email: memberEmail,
+            address: memberAddress,
+            joinDate: joinDate,
+            status: memberStatus,
+            agentCode: agentCode,
+          };
+        } else {
+          // Add new member
+          const newId =
+            members.length > 0 ? Math.max(...members.map((m) => m.id)) + 1 : 1;
+          members.push({
+            id: newId,
+            groupId: currentGroupId,
+            name: memberName,
+            phone: memberPhone,
+            email: memberEmail,
+            address: memberAddress,
+            joinDate: joinDate,
+            status: memberStatus,
+            agentCode: agentCode,
+            paidInstallments: 0,
+            pendingAmount: group.monthlyInstallment,
+          });
+
+          // Update group member count
+          const groupIndex = groups.findIndex((g) => g.id === currentGroupId);
+          groups[groupIndex].members += 1;
+
+          // Add to tally
+          tallyData.push({
+            groupId: currentGroupId,
+            groupName: group.name,
+            memberName: memberName,
+            pendingAmount: group.monthlyInstallment,
+            dueDate: getFutureDate(1),
+            installmentNo: 1,
+            status: "pending",
+          });
+        }
+
+        saveToLocalStorage();
+        closeMemberModal();
+        renderMembers();
+        updateDashboardCounts();
+
+        // Update the group display if we're on dashboard
+        renderGroups();
+      }
+
+      function deleteMember(memberId) {
+        if (confirm("Are you sure you want to delete this member?")) {
+          const member = members.find((m) => m.id === memberId);
+
+          // Remove member
+          members = members.filter((m) => m.id !== memberId);
+
+          // Update group member count
+          const groupIndex = groups.findIndex((g) => g.id === currentGroupId);
+          if (groupIndex !== -1) {
+            groups[groupIndex].members -= 1;
+          }
+
+          // Remove from tally
+          tallyData = tallyData.filter((t) => t.memberName !== member.name);
+
+          saveToLocalStorage();
+          renderMembers();
+          updateDashboardCounts();
+
+          // Update the group display if we're on dashboard
+          renderGroups();
+        }
+      }
+
+      function showNotificationModal(memberId, type) {
+        notificationMember = members.find((m) => m.id === memberId);
+
+        document.getElementById("notification-recipient").innerHTML = `
+                <div><strong>${notificationMember.name}</strong></div>
+                <div>Phone: ${notificationMember.phone}</div>
+                <div>Email: ${notificationMember.email}</div>
+            `;
+
+        document.getElementById("notification-type").value = type;
+
+        // Set default message
+        const group = groups.find((g) => g.id === notificationMember.groupId);
+        const dueDate = new Date();
+        dueDate.setDate(dueDate.getDate() + 7);
+        const dueDateStr = dueDate.toISOString().split("T")[0];
+
+        const message = `Dear ${
+          notificationMember.name
+        }, this is a reminder that your monthly installment of ₹${
+          group.monthlyInstallment
+        } for ${group.name} is due on ${formatDate(
+          dueDateStr
+        )}. Please make the payment at your earliest convenience. Thank you!`;
+        document.getElementById("notification-message").value = message;
+
+        document.getElementById("notification-modal").classList.add("active");
+      }
+
+      function sendNotification() {
+        const type = document.getElementById("notification-type").value;
+        const date = document.getElementById("notification-date").value;
+        const time = document.getElementById("notification-time").value;
+        const message = document.getElementById("notification-message").value;
+
+        if (!date || !time || !message) {
+          alert("Please fill in all required fields");
+          return;
+        }
+
+        // In a real app, this would send the notification via API
+        // For demo, we'll just show a success message
+        alert(
+          `Notification scheduled via ${type.toUpperCase()} for ${
+            notificationMember.name
+          } on ${formatDate(date)} at ${time}`
+        );
+
+        closeNotificationModal();
+      }
+
+      function downloadTally() {
+        alert(
+          "Tally sheet exported as PDF. In a real application, this would generate and download a PDF file."
+        );
+      }
+
+      function closeGroupModal() {
+        document.getElementById("group-modal").classList.remove("active");
+      }
+
+      function closeMemberModal() {
+        document.getElementById("member-modal").classList.remove("active");
+      }
+
+      function closeNotificationModal() {
+        document
+          .getElementById("notification-modal")
+          .classList.remove("active");
+      }
+
+      function closeTransferModal() {
+        document.getElementById("transfer-modal").classList.remove("active");
+        transferMember = null;
+      }
+
+      function updateDashboardCounts() {
+        document.getElementById("total-groups").textContent = groups.length;
+        document.getElementById("total-members").textContent = members.length;
+      }
+
+      function saveToLocalStorage() {
+        localStorage.setItem("chitFundGroups", JSON.stringify(groups));
+        localStorage.setItem("chitFundMembers", JSON.stringify(members));
+        localStorage.setItem("chitFundTally", JSON.stringify(tallyData));
+        localStorage.setItem("chitFundAuction", JSON.stringify(auctionData));
+        localStorage.setItem("chitFundAgents", JSON.stringify(agents));
+      }
+
+      function formatDate(dateString) {
+        const options = { year: "numeric", month: "short", day: "numeric" };
+        return new Date(dateString).toLocaleDateString("en-US", options);
+      }
+    </script>
+  </body>
+</html>
